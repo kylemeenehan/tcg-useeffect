@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from 'react';
+
 
 function App() {
+  console.log("rendering");
+
+  const [count, setCount] = useState(0);
+  const [secondCount, setSecondCount] = useState(0);
+
+    setTimeout(() => {
+      setSecondCount((secondCount) => secondCount + 1);
+    }, 1000);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setCount((count) => count + 1);
+    }, 1000);
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Count: I've rendered {count} times!</h1>;
+      <h1>Second Count: I've rendered {secondCount} times!</h1>;
     </div>
-  );
+  )
 }
 
 export default App;
